@@ -17,7 +17,14 @@ const postNotifications = tokens =>
 const tokens = ['ExponentPushToken[oj4iK4CRA7Ry8gDCrtawef]']
 
 postNotifications(tokens)
-  .then(receipts => {
-    console.log(receipts)
+  .then(console.log)
+  .catch(console.error)
+
+expo
+  .sendPushNotificationAsync({
+    to: tokens[0],
+    sound: 'default',
+    title: 'Some Title',
   })
+  .then(console.log)
   .catch(console.error)
